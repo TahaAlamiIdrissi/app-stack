@@ -3,6 +3,7 @@ const router = require("express").Router();
 const { registerValidation } = require("../validation/validation");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const mongoose = require("mongoose");
 const verify = require("../validation/verifyToken");
 
 /* Post method for saving a user to db  */

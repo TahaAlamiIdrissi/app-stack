@@ -7,7 +7,7 @@
           <v-alert dense outlined type="error">
             
           </v-alert>
-        </div> -->
+        </div>-->
         <div class="error" v-html="error"></div>
         <v-text-field v-model="email" label="E-mail" required></v-text-field>
         <v-text-field v-model="password" type="password" label="password" required></v-text-field>
@@ -31,13 +31,18 @@ export default {
   },
   methods: {
     async login() {
-      const response = await AuthenticationService.login({
-        email: this.email,
-        password: this.password
-      });
-      this.error = response.data.message;
-      this.isError = response.data.isError;
-      console.log(this.isError);
+      try {
+        const response = await AuthenticationService.login({
+          email: this.email,
+          password: this.password
+        });
+        this.$store.dispatch("setToken", response.data.token);
+        this.$store.dispatch("setUser", response.data.user);
+        console.log(response);
+      } catch (error) {
+        this.error = error.response.data.message;
+        this.isError = error.response.data.isError;
+      }
     }
   }
 };
