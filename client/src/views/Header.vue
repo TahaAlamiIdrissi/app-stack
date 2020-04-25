@@ -1,7 +1,7 @@
 <template>
   <v-app-bar app color="primary" dark>
     <v-toolbar-title class="home" @click="navigateTo({name:'Home'})">MEVN Stack</v-toolbar-title>
-
+    <v-btn depressed large color="primary" @click="navigateTo({name:'Songs' })">browse</v-btn>
     <v-spacer></v-spacer>
     <div class="d-flex align-center links-style">
       <v-toolbar-items>
@@ -35,7 +35,9 @@
 export default {
   methods: {
     navigateTo(route) {
-      this.$router.push(route);
+      this.$router.push(route).catch(() => {
+        console.log("already clicked");
+      });
     },
     logout() {
       this.$store.dispatch("setToken", null);

@@ -3,12 +3,9 @@
     <v-row class="text-center">
       <v-col cols="12">
         <h3>Login</h3>
-        <!-- <div v-bind:class="{'visible':isError}">
-          <v-alert dense outlined type="error">
-            
-          </v-alert>
-        </div>-->
-        <div class="error" v-html="error"></div>
+        <v-alert v-if="isError" dense outlined type="error">
+          <div v-html="error"></div>
+        </v-alert>
         <v-text-field v-model="email" label="E-mail" required></v-text-field>
         <v-text-field v-model="password" type="password" label="password" required></v-text-field>
         <v-btn color="success" class="mr-4" @click="login">Validate</v-btn>
@@ -39,9 +36,10 @@ export default {
         this.$store.dispatch("setToken", response.data.token);
         this.$store.dispatch("setUser", response.data.user);
         console.log(response);
+        this.error = response.data.message;
+        this.isError = response.data.isError;
       } catch (error) {
-        this.error = error.response.data.message;
-        this.isError = error.response.data.isError;
+        console.log(error);
       }
     }
   }

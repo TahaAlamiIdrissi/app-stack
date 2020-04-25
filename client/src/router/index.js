@@ -3,6 +3,8 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Register from "../views/Register.vue";
 import Login from "../views/Login.vue";
+import Songs from "../views/Songs.vue";
+
 
 Vue.use(VueRouter);
 
@@ -25,6 +27,11 @@ const routes = [
     name: "Login",
     component: Login,
   },
+  {
+    path: "/songs",
+    name: "Songs",
+    component: Songs,
+  }
 ];
 
 const router = new VueRouter({
