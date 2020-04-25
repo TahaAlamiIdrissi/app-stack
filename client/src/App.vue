@@ -1,14 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center links-style" >
-        <router-link class="links" to="/">Home</router-link>
-        <router-link class="links" to="/register">Register</router-link>
-      </div>
-
-      <v-spacer></v-spacer>
-    </v-app-bar>
-
+    <Header/>
     <v-content>
       <router-view></router-view>
     </v-content>
@@ -16,10 +8,13 @@
 </template>
 
 <script>
+import Header from "./views/Header";
 export default {
   name: "App",
 
-  components: {},
+  components: {
+    Header
+  },
 
   data: () => ({
     //
@@ -28,11 +23,5 @@ export default {
 </script>
 
 <style  scoped>
-.links{
-  color: black;
-  text-decoration: none;
-  padding-left: 15px;
-  
-}
 
 </style>

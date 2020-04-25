@@ -2,7 +2,7 @@
   <v-container class="register">
     <v-row class="text-center">
       <v-col cols="12">
-        <h3>Register</h3>
+        <h3>Login</h3>
         <!-- <div v-bind:class="{'visible':isError}">
           <v-alert dense outlined type="error">
             
@@ -11,7 +11,7 @@
         <div class="error" v-html="error"></div>
         <v-text-field v-model="email" label="E-mail" required></v-text-field>
         <v-text-field v-model="password" type="password" label="password" required></v-text-field>
-        <v-btn color="success" class="mr-4" @click="register">Validate</v-btn>
+        <v-btn color="success" class="mr-4" @click="login">Validate</v-btn>
       </v-col>
     </v-row>
   </v-container>
@@ -20,7 +20,7 @@
 <script>
 import AuthenticationService from "../services/AuthenticationService";
 export default {
-  name: "Register",
+  name: "Login",
   data() {
     return {
       email: "",
@@ -30,8 +30,8 @@ export default {
     };
   },
   methods: {
-    async register() {
-      const response = await AuthenticationService.register({
+    async login() {
+      const response = await AuthenticationService.login({
         email: this.email,
         password: this.password
       });
