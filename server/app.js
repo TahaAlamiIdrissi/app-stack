@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const userRoutes = require("./src/routes/user");
+const songRoutes = require("./src/routes/song");
+
 require("dotenv/config");
 
 app.use(bodyParser.json());
@@ -14,6 +16,8 @@ mongoose.connect(
   console.log("Connected to Atlas cluster ...")
 );
 app.use("/", userRoutes);
+app.use("/", songRoutes);
+
 /* app.use("/register", (req, res) => {
   res.send({
     message: `${req.body.email} send this ! `,

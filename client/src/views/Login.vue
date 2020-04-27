@@ -38,6 +38,7 @@ export default {
         console.log(response);
         this.error = response.data.message;
         this.isError = response.data.isError;
+        this.$router.push({name:"Songs"})
       } catch (error) {
         console.log(error);
       }
