@@ -37,4 +37,15 @@ router.get("/songs", async (req, res) => {
   }
 });
 
+router.get("/songs/:songId", async (req, res) => {
+  const songId = req.params.songId;
+  try {
+    const song = await Song.findById(songId);
+    console.log(song)
+    res.status(200).send(song)
+  } catch (error) {
+    res.status(400).send({ error });
+  }
+});
+
 module.exports = router;
